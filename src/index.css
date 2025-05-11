@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color: theme('colors.gray.50');
+  --text-color: theme('colors.gray.900');
+}
+
+:root[data-theme='dark'] {
+  --background-color: theme('colors.gray.900');
+  --text-color: theme('colors.gray.50');
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Pull to refresh styling */
+.ptr--ptr {
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  font-size: 0.85em;
+  font-weight: bold;
+  top: 0;
+  height: 0;
+  transition: height 0.3s, min-height 0.3s;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  align-content: stretch;
+}
+
+.ptr--box {
+  padding: 10px;
+  flex-basis: 100%;
+}
+
+.ptr--pull {
+  transition: none;
+}
+
+.ptr--text {
+  margin-top: .33em;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.ptr--icon {
+  color: rgba(0, 0, 0, 0.3);
+  transition: transform .3s;
+}
+
+/* Loading animation */
+.ptr--loading .ptr--icon {
+  animation: ptr-loading-rotation 1s infinite linear;
+}
+
+@keyframes ptr-loading-rotation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
